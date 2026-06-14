@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# 에디터/도구
+.omc/
+*.tmp
+*.swp
+.vscode/
+
+# 사이트 생성기 빌드 산출물 (나중에 사이트 만들 때 사용)
+dist/
+.astro/
+node_modules/
+public/build/
