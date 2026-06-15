@@ -107,6 +107,19 @@ til push
 
 ---
 
+## 보안: 푸시 전 자동 검사 (pre-push 훅)
+
+Public 저장소라, `git push` 할 때 `bin/secret-scan.sh` 가 자동으로 돈다. API 키·내부 호스트·사설 IP·DB 커넥션 스트링·회사 도메인 등이 글에 섞여 있으면 **푸시를 막는다**. (`/til` 스킬의 점검과 별개의 이중 안전망)
+
+- 오탐이라 확신하면 우회: `git push --no-verify`
+- **다른 컴퓨터에서 클론하면 훅 재설치 필요** (훅은 클론에 안 따라옴):
+  ```zsh
+  chmod +x bin/secret-scan.sh
+  ln -sf ../../bin/secret-scan.sh .git/hooks/pre-push
+  ```
+
+---
+
 ## 좋은 TIL 습관 (나중에 Obsidian / AI 지식베이스로 써먹기 위해)
 
 - 태그는 **소문자 영문**으로 통일 (`sql` O, `SQL`/`Sql` X)
